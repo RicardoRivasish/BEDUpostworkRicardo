@@ -4,7 +4,7 @@ library(dplyr)
 #puedes encontrar en el siguiente enlace: https://www.football-data.co.uk/spainm.php
 #Se define el ambiente de trabajo
 getwd()
-setwd("C:/Users/Dell/Documents/GitHub/BEDUpostworkRicardo/Postwork/Sesion2/")
+setwd("C:/Users/Dell/Documents/GitHub/BEDUpostworkRicardo/Postwork/Sesion2/data/")
 #Se definen variables con urls
 B1920 <- "https://www.football-data.co.uk/mmz4281/1920/D1.csv"
 B1819 <- "https://www.football-data.co.uk/mmz4281/1819/D1.csv"
@@ -37,9 +37,13 @@ lista<- lapply(lista, select, Date,HomeTeam,AwayTeam,FTHG,FTAG,FTR)
 #forma un único data frame que contenga las seis columnas mencionadas 
 #en el punto 3 (Hint 2: la función do.call podría ser utilizada).
 str(lista[[1]]); str(lista[[2]]); str(lista[[3]])
-lista<-lapply(lista,mutate, Date=as.Date(Date, "%d/%m/%Y"))
+lista[[1]]$Date=as.Date(lista[[1]]$Date, "%d/%m/%y")
+lista[[2]]$Date=as.Date(lista[[2]]$Date, "%d/%m/%y")
+lista[[3]]$Date=as.Date(lista[[3]]$Date, "%d/%m/%y")
 lista <- do.call(rbind, lista)
 head(lista)
 tail(lista)
 dim(lista)
-
+View(lista)
+setwd("C:/Users/Dell/Documents/GitHub/BEDUpostworkRicardo/Postwork/Sesion2/")
+write.csv(lista,"Sesion2.csv")
