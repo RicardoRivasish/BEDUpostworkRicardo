@@ -28,7 +28,7 @@ n
 marginal.casa <- table(goles$FTHG) #tabla con frecuencia de goles
 marginal.casa = as.data.frame(marginal.casa) #se cambia formato a dataframe
 names(marginal.casa)[1] = 'Goles' #se renombra la primer columna
-marginal.casa$marginal <- frecuencia.casa$Freq / n
+marginal.casa$marginal <- marginal.casa$Freq / n
 marginal.casa
 
 #Probabilidad marginal equipo visitante
