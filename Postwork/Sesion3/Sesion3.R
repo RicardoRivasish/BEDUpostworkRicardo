@@ -55,14 +55,10 @@ ggplot(marginal.visitante, aes(x = marginal, y = Freq)) +
 #números de goles que anotan el equipo de casa y el equipo 
 #visitante en un partido.
 
-head(goles)
-Conjunta<-goles%>%select(FTHG,FTAG)
-Conjunta<-as.data.frame.matrix(table(Conjunta))
-Conjunta <- Conjunta / n
-str(Conjunta)
-Conjunta<-as.matrix(Conjunta)
-Conjunta
-str(Conjunta)
-heatmap(Conjunta)
+Conjunta<-goles%>%select(FTHG,FTAG)#Se redefine un dataframe con columnas de goles de casa y visitante
+Conjunta<-as.data.frame.matrix(table(Conjunta))#Se aplica la funcion table y se convierte a dataframe
+Conjunta <- Conjunta / n #Se divide entre número total de datos para obtener la matriz de probabilidad
+Conjunta<-as.matrix(Conjunta)#Se guarda dataframe como matriz
+heatmap(Conjunta)#Se grafica el heatmap
 
 
