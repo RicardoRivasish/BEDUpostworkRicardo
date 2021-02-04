@@ -55,21 +55,14 @@ ggplot(marginal.visitante, aes(x = marginal, y = Freq)) +
 #números de goles que anotan el equipo de casa y el equipo 
 #visitante en un partido.
 
-######Esta sección de código no se ha resuelto
-probabilidad.conjunta$golcasa<-c(0,0,0,0,0,0,0,1,1,1,1,1,1,1,2,2,2,2,2,2,2,3,3,3,3,3,3,4,4,4,4,4,5,5,5,6,6,7,7,8,8)
-probabilidad.conjunta$golvisitante<-c(0,1,2,3,4,5,6,0,1,2,3,4,5,6,0,1,2,3,4,5,6,0,1,2,3,4,5,0,1,2,3,4,0,1,2,0,1,0,1,0,1)
-golcasa<- c(3,rep(4,2),rep(5,4),rep(6,5),rep(7,5),rep(8,5))
-golvisitante<-c(6,5,6,3,4,5,6,2,3,4,5,6,2,3,4,5,6,2,3,4,5,6)
-conjunta<-c(rep(0,22))
-extra<-data.frame(golcasa,golvisitante,conjunta)
-probabilidad.conjunta<-rbind(probabilidad.conjunta,extra)
-probabilidad.conjunta
+head(goles)
+Conjunta<-goles%>%select(FTHG,FTAG)
+Conjunta<-as.data.frame.matrix(table(Conjunta))
+Conjunta <- Conjunta / n
+str(Conjunta)
+Conjunta<-as.matrix(Conjunta)
+Conjunta
+str(Conjunta)
+heatmap(Conjunta)
 
-install.packages(c("tidyr", "devtools"))
-library(tidyr)
-probabilidad.conjunta<-select(probabilidad.conjunta,golcasa,golvisitante,conjunta)
-#probabilidad.conjunta$golcasa <- as.numeric(probabilidad.conjunta$golcasa)
-head(probabilidad.conjunta)
-str(probabilidad.conjunta)
-spread(probabilidad.conjunta, golcasa,golvisitante )
 
