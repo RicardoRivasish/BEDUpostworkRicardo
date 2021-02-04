@@ -4,7 +4,7 @@ library(dplyr)
 library(ggplot2)
 library(boot)
 
-setwd("C:/Users/Dell/Documents/GitHub/BEDUpostworkRicardo/Postwork/Sesion4/data")
+setwd("C:/.../Postwork/Sesion4/data")
 
 #Obteniendo el dataframe del postwork-02
 #{
